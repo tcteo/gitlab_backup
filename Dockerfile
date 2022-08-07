@@ -4,10 +4,10 @@ COPY main.sh /main.sh
 RUN mkdir /data
 
 # set up a fake homedir
-RUN mkdir /home
-RUN chmod a+rwx /home
-ENV HOME /home
-WORKDIR /home
+RUN mkdir -p /home/fake
+RUN chmod a+rwx /home/fake
+ENV HOME /home/fake
+WORKDIR /home/fake
 
 VOLUME ["/data"]
 ENTRYPOINT ["/main.sh"]
