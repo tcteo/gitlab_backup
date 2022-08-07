@@ -1,12 +1,9 @@
 #!/bin/bash
 
-# glab "$@"
-
-# https://docs.gitlab.com/ee/api/graphql/reference/#project
-
 # - List projects I'm a member of
 # - Use jq to convert it to a tab separated format
-# - 
+# - Call a function for each repo
+
 glab api graphql -f query='
 query {
   projects(membership:true) {
