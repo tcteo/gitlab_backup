@@ -41,7 +41,7 @@ do_backup () {
   else
     cd "${dst}"
     echo "fetching..."
-    git fetch "${httpurl_auth}" || (
+    git fetch || (
       cd "${wd}"  # So that we're not in a directory that's about to be deleted, that causes problems.
       echo "fetch failed, deleting and cloning...";
       rm -rf "${dst}"
