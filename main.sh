@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+export GIT_ASKPASS=/git_askpass.sh
 
 # - List projects the token owner is a member of
 # - Use jq to convert it to a tab separated format
@@ -30,7 +31,7 @@ do_backup () {
   dst="${dst_base}/${namespace}/${repo}"
   echo "dst: ${dst}"
 
-  httpurl_auth="$( echo "${httpurl}" | sed -e "s/https:\/\//https:\/\/${GITLAB_USER}:${GITLAB_TOKEN}@/g" )"
+  httpurl_auth="$( echo "${httpurl}" | sed -e "s/https:\/\//https:\/\/${GITLAB_USER}@/g" )"
 
   wd="$(pwd)"
   if [ ! -d "${dst}" ]; then
