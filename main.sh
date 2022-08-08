@@ -40,8 +40,11 @@ do_backup () {
   else
     cd "${dst}"
     echo "fetching..."
-    git fetch "${httpurl_auth}" || \
-    (echo "fetch failed, cloning instead..."; git clone --mirror "${httpurl_auth}" "${dst}")
+    git fetch "${httpurl_auth}" || (
+      echo "fetch failed, deleting and cloning...";
+      rm -f "${dst}"
+      git clone --mirror "${httpurl_auth}" "${dst}"
+    )
     cd "${wd}"
   fi
   
