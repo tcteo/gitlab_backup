@@ -42,7 +42,7 @@ do_backup () {
     echo "fetching..."
     git fetch "${httpurl_auth}" || (
       echo "fetch failed, deleting and cloning...";
-      rm -f "${dst}"
+      rm -rf "${dst}"
       git clone --mirror "${httpurl_auth}" "${dst}"
     )
     cd "${wd}"
